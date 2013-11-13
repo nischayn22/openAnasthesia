@@ -35,8 +35,6 @@ foreach($apiData as $apiDataFields){
 
 $reviewTemplate->makeTextFromKeyValue( array( 'Date' => date("F j, Y"), 'Questions' => implode($questions, ',') ) );
 
-//echo $reviewTemplate->getText();
-
 $mwApi = new MediaWikiApi($settings['siteUrl']);
 
 echo "Logging in to the wiki\n";
@@ -47,6 +45,6 @@ if( $mwApi->login( $settings['user'], $settings['password'] ) ){
 
 echo "Exporting page\n";
 
-if($mwApi->exportPage( "Review:Question of the Day for " . date("F j,Y"), $reviewTemplate->getText() ) == 1 )
+if($mwApi->createPage( "Review:Question of the Day for " . date("F j, Y"), $reviewTemplate->getText() ) == 1 )
     echo "SUCCESS\n";
 

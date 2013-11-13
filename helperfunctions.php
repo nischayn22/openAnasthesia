@@ -20,7 +20,7 @@ function questionApiToTemplate($apiData){
          foreach($apiData['question_pubmed'] as $pubmed){
                 $pubmedIds[] = $pubmed['id'];
          }
-         $key_values['PubMed IDs'] = implode($pubmedIds, ',');
+         $key_values['PubMed IDs'] = implode($pubmedIds, ';');
 	 return $key_values;
 }
 
