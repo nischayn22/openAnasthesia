@@ -40,7 +40,7 @@ foreach($apiData as $keyword){
         if($mwApi->editPage( "ABA keyword:" . $keyword['title'] , $keywordTemplate->getText() ) == 1 )
             echo "SUCCESS\n";
 
-        // Uncomment both lines when not debugging
+        // Uncomment both lines when debugging
         //echo "If you are seeing this, you are debugging..\n";
         //break;
 }
