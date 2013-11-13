@@ -1,5 +1,49 @@
 <?php
 
+function keywordApiToTemplate($apiData){
+         $key_values = array();
+         $key_values['Sources'] = $apiData['keyword_sources'];
+
+         $pubmedIds = array();
+         foreach($apiData['field_pubmed'] as $pubmed){
+                $pubmedIds[] = $pubmed['id'];
+         }
+         $key_values['PubMed IDs'] = implode($pubmedIds, ';');
+
+         $key_values['Years'] = '';
+         foreach($apiData['keyword_asked_history'] as $asked ){
+                  $askedTemplate = new TemplateBase( "Asked" );
+                  $askedTemplate->makeTextFromKeyValue(array( 'Percentage' => $asked['percentage'], 'Year' => $asked['year']));
+                  $key_values['Years'] .= $askedTemplate->getText();
+         }
+
+         //TODO
+         $key_values['Images'] = '';
+
+         $similarKeywords = array();
+         foreach($apiData['keyword_similar'] as $similar){
+                  $similarKeywords[] = $similar['value'];
+         }
+         $key_values['Similar keywords'] = implode($similarKeywords, ';');
+
+         $key_values['Category1'] = $apiData['keyword_category_1'];
+         $key_values['Category2'] = $apiData['keyword_category_2'];
+
+         $relatedKeywords = array();
+         foreach($apiData['keyword_related'] as $related){
+                  $relatedKeywords[] = $related['title'];
+         }
+         $key_values['Related keywords'] = implode($relatedKeywords, ';');
+
+         $seeAlsoKeywords = array();
+         foreach($apiData['keyword_see_also'] as $seeAlso){
+                  $seeAlsoKeywords[] = $seeAlso['title'];
+         }
+         $key_values['See also'] = implode($seeAlsoKeywords, ';');
+
+         return $key_values;
+}
+
 function questionApiToTemplate($apiData){
 	 $key_values = array();
          $key_values['Question'] = $apiData['title'];
