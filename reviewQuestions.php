@@ -10,7 +10,7 @@ echo "Calling the Api \n";
 
 $headers  = array(
 	  "Accept: application/json",
-	  "Authorization: Bearer 6b4a536218d7b3802bf7c4e84ef66096c2d3bd02",
+	  "Authorization: Bearer " . $settings['auth_token'],
 );
 
 $json = httpRequest("dev.ammochamber.com/api/question_of_the_day", "", false, 0, $headers);

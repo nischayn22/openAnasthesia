@@ -17,8 +17,12 @@ function keywordApiToTemplate($apiData){
                   $key_values['Years'] .= $askedTemplate->getText();
          }
 
-         //TODO
          $key_values['Images'] = '';
+         foreach($apiData['keyword_image'] as $image){
+                  $galleryTemplate = new TemplateBase( "Gallery" );
+                  $galleryTemplate->makeTextFromKeyValue(array( 'Image' => $image['url'], 'Caption' => $image['title'] ));
+                  $key_values['Images'] .= $galleryTemplate->getText();
+         }
 
          $similarKeywords = array();
          foreach($apiData['keyword_similar'] as $similar){
