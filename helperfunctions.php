@@ -6,8 +6,11 @@ function keywordApiToTemplate($apiData){
 
          $pubmedIds = array();
          foreach($apiData['field_pubmed'] as $pubmed){
-                $pubmedIds[] = $pubmed['id'];
+               if(strcmp($pubmed['id'], '#160') >= 0)
+                   $pubmed['id'] = str_replace("&#160", '', $pubmed['id']);
+               $pubmedIds[] = $pubmed['id'];
          }
+
          $key_values['PubMed IDs'] = implode($pubmedIds, ';');
 
          $key_values['Years'] = '';

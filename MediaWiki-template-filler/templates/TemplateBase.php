@@ -46,7 +46,7 @@ class TemplateBase{
 	       		$this->mText .= '=';
 	       		$this->mText .= $value;
 	       }
-	       $this->mText .= "}}";
+	       $this->mText .= "\n}}";
       }
       
 }
