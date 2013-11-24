@@ -2,6 +2,7 @@
 
 function keywordApiToTemplate($apiData){
          $key_values = array();
+         $key_values['kid'] = $apiData['kid'];
          $key_values['Sources'] = $apiData['keyword_sources'];
 
          $pubmedIds = array();
