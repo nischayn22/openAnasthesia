@@ -101,6 +101,7 @@ function editPage( $pageName, $content, $createonly = false, $prepend = false, $
 	$editToken = $this->editToken;
 	$site = $this->siteUrl;
 	$content = urlencode( $content );
+        $pageName = urlencode($pageName);
 	$url = $site . "/api.php?format=xml&action=edit&title=$pageName";
         if($createonly)
                 $url .= "&createonly=true";
